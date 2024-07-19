@@ -77,7 +77,7 @@ switch (day) {
 
 const score = 60
 
-switch (score) {
+switch (true) {
     case (score>=90): console.log("A");
         break;
     case (score>=80): console.log("B");
@@ -89,4 +89,32 @@ switch (score) {
     case (score>=50): console.log("E");
         break;
     default: console.log("F");
+}
+
+// Activity 4 : Conditional ternary operator
+
+// Task6:
+
+const example = 23
+
+console.log( example % 2 == 0 ? "Even" : "Odd" )
+
+// Activity 5 : Combining conditions
+
+// Task7:
+
+const year = 2015
+
+if (year % 4 == 0) {
+    if (year % 100 == 0) {
+        if (year % 400 == 0) {
+            console.log("Leap year");
+        } else  {
+            console.log("Not a leap year");
+        }
+    } else {
+        console.log("Leap year");
+    }
+} else {
+    console.log("Not a leap year")
 }
