@@ -80,8 +80,10 @@ arr.forEach(item => console.log(item))
 
 // Task12:
 
-const arr2 = [[1,2,3],[4,5,6],[7,8]]
+const mulArr = [[1,2],[3,4]]
 
-console.log(arr2);
+console.table(mulArr);
 
 // Task13:
+
+console.log(mulArr[0][1]);
