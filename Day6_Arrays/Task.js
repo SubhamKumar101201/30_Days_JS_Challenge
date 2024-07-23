@@ -1,89 +1,143 @@
-// Activity 1 : Array creation and access
+// // Activity 1 : Array creation and access
 
-// Task1:
+// // Task1:
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-console.log(arr);
+// console.log(arr);
 
-// Task2:
+// // Task2:
 
-console.log(`first element of array is ${arr[0]} and last element of array is ${arr[arr.length-1]}`);
+// console.log(`first element of array is ${arr[0]} and last element of array is ${arr[arr.length-1]}`);
 
-// Activity 2 : Array methods
+// // Activity 2 : Array methods
 
-// Task3:
+// // Task3:
 
-arr.push(11)
+// arr.push(11)
 
-console.log(arr);
+// console.log(arr);
 
-// Task4:
+// // Task4:
 
-arr.pop()
+// arr.pop()
 
-console.log(arr);
+// console.log(arr);
 
-// Task5:
+// // Task5:
 
-arr.shift()
-arr.shift()
+// arr.shift()
+// arr.shift()
 
-console.log(arr);
+// console.log(arr);
 
-// Task6:
+// // Task6:
 
-arr.unshift(2)
-arr.unshift(0,1)
+// arr.unshift(2)
+// arr.unshift(0,1)
 
-console.log(arr);
+// console.log(arr);
 
-// Activity - 3 : Array methods
+// // Activity - 3 : Array methods
 
-// Task7:
+// // Task7:
 
-let val = []
+// let val = []
 
-arr.shift()
+// arr.shift()
 
-arr.map((item) => val.push(item*2))
+// arr.map((item) => val.push(item*2))
 
-console.log(val);
+// console.log(val);
 
-// Task8:
+// // Task8:
 
-const even = arr.filter(item => item % 2 == 0)
+// const even = arr.filter(item => item % 2 == 0)
 
-console.log(even);
+// console.log(even);
 
-// Task9:
+// // Task9:
 
-const sum = arr.reduce((accum,item) => accum+item)
+// const sum = arr.reduce((accum,item) => accum+item)
 
-console.log(sum);
+// console.log(sum);
 
-// Activity - 4 : Array iteration
+// // Activity - 4 : Array iteration
 
-// Task10:
+// // Task10:
 
-for(let i=0 ; i<even.length ; i++) {
-    process.stdout.write(even[i].toString()+" ")
+// for(let i=0 ; i<even.length ; i++) {
+//     process.stdout.write(even[i].toString()+" ")
+// }
+
+// console.log();
+
+// // Task11:
+
+// arr.forEach(item => console.log(item))
+
+// // Activity - 5 : Multi-dimensional array
+
+// // Task12:
+
+// const mulArr = [[1,2],[3,4]]
+
+// console.table(mulArr);
+
+// // Task13:
+
+// console.log(mulArr[0][1]);
+
+// Pollyfill of Map method 
+
+Array.prototype.myMap = function (cb) {
+    let res = [];
+    for (let i = 0; i < this.length; i++) {
+        res.push(cb(this[i], i, this));
+    }
+    return res
 }
 
-console.log();
+// Pollyfill of Filter method 
 
-// Task11:
+Array.prototype.myFilter = function (cb) {
+    let res = [];
+    for (let i = 0; i < this.length; i++) {
+        if(cb(this[i],i,this)) res.push(this[i])
+    }
+    return res
+}
 
-arr.forEach(item => console.log(item))
+// Pollyfill of Reduce method 
 
-// Activity - 5 : Multi-dimensional array
+Array.prototype.myReduce = function (cb,intialVal) {
+    let res = intialVal;
 
-// Task12:
+    for (let i = 0; i < this.length; i++) {
+        res = res ? cb(res,this[i],i,this) : this[0]
+    }
+    return res
+}
 
-const mulArr = [[1,2],[3,4]]
+const arr = [1,2,4,6,2,6,8,22,25]
 
-console.table(mulArr);
+let map = arr.myMap((i) => {
+    return i
+})
 
-// Task13:
+let filter = arr.myFilter((i,v) => {
+    return i < v
+})
 
-console.log(mulArr[0][1]);
+const arr1 = [1,2,3,4,5]
+
+let reduce = arr1.myReduce((acc,item) => {
+    return acc + item
+})
+
+console.log(map);
+
+console.log(filter);
+
+console.log(reduce);
+
